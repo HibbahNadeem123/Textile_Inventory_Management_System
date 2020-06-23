@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <h4>Dashboard</h4>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+
+        <h1 class="display-4">Welcome!</h1>
+        <p class="lead">This is a Webapplication where you ............</p>
+        <hr class="my-4">
+        <p class="lead">
+            @*<button class="btn-primary btn-lg" style="color:white;">@Html.ActionLink("Manage Prduct", "Index", "product")</button>*@
+            
+            <a class="btn btn-primary btn-lg" href="/product" role="button">Manage product</a>
+        </p>
+    </div>
+
