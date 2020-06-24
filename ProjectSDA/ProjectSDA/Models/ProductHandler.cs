@@ -20,7 +20,7 @@ namespace ProjectSDA.Models
         public bool AddProduct(Product smodel)
         {
             connection();
-            SqlCommand cmd = new SqlCommand("InsertProduct", con);
+            SqlCommand cmd = new SqlCommand("AddNewProduct", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Name", smodel.Name);

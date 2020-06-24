@@ -1,0 +1,38 @@
+﻿CREATE TABLE [dbo].[Product] (
+    [ProductID]          INT            IDENTITY (1, 1) NOT NULL,
+    [ProductName]        VARCHAR (25)   NOT NULL,
+    [Price]              INT            NOT NULL,
+    [ProductDescription] NVARCHAR (MAX) NULL,
+    [Category]           NVARCHAR (50)  NOT NULL,
+    [ProductQuantity]    INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([ProductID] ASC)
+);
+
+Create procedure [dbo].[DeleteProduct]  
+(  
+   @id int 
+)  
+as  
+begin  
+   delete from Product where ProductID =@id
+End
+
+Create procedure [dbo].[UpdateProduct]  
+(  
+   @id int,
+   @Name varchar (25),  
+   @Price int,  
+   @Description nvarchar (MAX),
+   @Category nvarchar (50),
+   @Quantity int
+)  
+as  
+begin  
+   update Product set ProductName=@Name, Price=@Price, ProductDescription=@Description, Category= @Category, ProductQuantity= @Quantity where ProductID =@id
+End
+
+create procedure [dbo].[ViewProduct] 
+as
+begin 
+   select * from Product
+end
