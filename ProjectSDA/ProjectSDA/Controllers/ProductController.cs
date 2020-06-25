@@ -10,11 +10,14 @@ namespace ProjectSDA.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(string Search)
         {
             ProductHandler dbhandle = new ProductHandler();
             ModelState.Clear();
-            return View(dbhandle.GetProduct());
+            if (Search == null)
+                return View(dbhandle.GetProduct());
+            else
+                return View(dbhandle.GetByName(Search));
         }
 
         // GET: Product/Details/5

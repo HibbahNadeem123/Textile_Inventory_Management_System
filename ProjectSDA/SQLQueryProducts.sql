@@ -36,3 +36,23 @@ as
 begin 
    select * from Product
 end
+
+CREATE PROCEDURE [dbo].[SearchByName]
+	@Name varchar(25)
+AS
+begin
+	SELECT * from Product where ProductName like @Name+'%'
+end
+
+CREATE procedure [dbo].[InsertProduct]  
+(  
+   @Name varchar (25),  
+   @Price int,  
+   @Description nvarchar (MAX),
+   @Category nvarchar (50),
+   @Quantity int
+)  
+as  
+begin  
+   Insert into Product values(@Name, @Price,@Description,@Category,@Quantity)  
+End

@@ -68,7 +68,39 @@ namespace ProjectSDA.Models
             }
             return Productlist;
         }
+        /// <summary>
+        /// search operation
+        /// </summary>
+        public List<Product> GetByName(string name)
+        {
+            connection();
+            List<Product> Productlist = new List<Product>();
 
+            SqlCommand cmd = new SqlCommand("SearchByName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", name);
+            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            con.Open();
+            sd.Fill(dt);
+            con.Close();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Productlist.Add(
+                new Product
+                {
+                    Id = Convert.ToInt32(dr["ProductID"]),
+                    Name = Convert.ToString(dr["ProductName"]),
+                    Price = Convert.ToInt32(dr["Price"]),
+                    Description = Convert.ToString(dr["ProductDescription"]),
+                    Category = Convert.ToString(dr["Category"]),
+                    Quantity = Convert.ToInt32(dr["ProductQuantity"]),
+                });
+            }
+            return Productlist;
+        }
         public bool UpdateDetails(Product smodel)
         {
             connection();
