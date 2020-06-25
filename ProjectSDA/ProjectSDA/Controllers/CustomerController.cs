@@ -10,18 +10,21 @@ namespace ProjectSDA.Controllers
     public class CustomerController : Controller
     {
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(string Search)
         {
             CustomerDBHandle dbhandle = new CustomerDBHandle();
             ModelState.Clear();
-            return View(dbhandle.GetCustomer());
+            if (Search == null)
+                return View(dbhandle.GetCustomer());
+            else
+                return View(dbhandle.GetByCustomerName(Search));
         }
 
-        // GET: Customer/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        //GET: Customer/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
         // GET: Customer/Create
         public ActionResult Create()

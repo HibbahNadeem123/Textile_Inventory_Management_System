@@ -1,4 +1,5 @@
-﻿CREATE TABLE [dbo].[Customers] (
+﻿create database sda_project_database
+CREATE TABLE [dbo].[Customers] (
     [CID]          INT            IDENTITY (1, 1) NOT NULL,
     [CName]        VARCHAR (50)   NOT NULL,
     [Email]              NVARCHAR(50)            NOT NULL,
@@ -31,6 +32,13 @@ begin
    update Customers set CName=@Name, Email=@Email, CompanyName=@CompanyName, City= @City, Country= @Country where CID =@id
 End
 
+CREATE PROCEDURE [dbo].[SearchByCustomerName]
+	@Name varchar(25)
+AS
+begin
+	SELECT * from Customers where CName like @Name+'%'
+end
+
 create procedure [dbo].[ViewCustomer] 
 as
 begin 
@@ -48,5 +56,5 @@ Create procedure [dbo].[AddNewCustomer]
 )  
 as  
 begin  
-   Insert into Company values(@CName,@Email,@CompanyName,@City,@Country)  
+   Insert into Customer values(@CName,@Email,@CompanyName,@City,@Country)  
 End;

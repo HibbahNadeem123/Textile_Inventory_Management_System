@@ -69,6 +69,37 @@ namespace ProjectSDA.Models
             return CustomerModellist;
         }
 
+        public List<CustomerModel> GetByCustomerName(string name)
+        {
+            connection();
+            List<CustomerModel> Customerlist = new List<CustomerModel>();
+
+            SqlCommand cmd = new SqlCommand("SearchByCustomerName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", name);
+            SqlDataAdapter sd = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            con.Open();
+            sd.Fill(dt);
+            con.Close();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Customerlist.Add(
+                new CustomerModel
+                {
+                    CID = Convert.ToInt32(dr["CID"]),
+                    CName = Convert.ToString(dr["CName"]),
+                    Email = Convert.ToString(dr["Email"]),
+                    CompanyName = Convert.ToString(dr["CompanyName"]),
+                    City = Convert.ToString(dr["City"]),
+                    Country = Convert.ToString(dr["Country"]),
+                });
+            }
+            return Customerlist;
+        }
+
         public bool UpdateDetails(CustomerModel cmodel)
         {
             connection();

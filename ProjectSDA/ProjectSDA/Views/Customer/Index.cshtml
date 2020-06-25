@@ -10,7 +10,29 @@
         <li class="breadcrumb-item active" aria-current="page">Customers</li>
     </ol>
 </nav>
-<a class="btn btn-primary btn-block" href="/Customer/Create" role="button">+ Add Customer</a>
+
+<div class="container">
+    <div class="row justify-content-lg-left">
+        <div class="col col-lg-7">
+            @using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+            {
+                <div class="row">
+                    <div class="col col-lg-4">
+                        <span>@Html.TextBox("Search", null, new { @class = "form-control" })</span>
+                    </div>
+                    <div class="col col-lg-2">
+                        <input type="submit" value="Search" class="btn btn-info" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col col-lg-4">
+            <a class="btn btn-primary btn-block" href="/Customer/Create" role="button">+ Add product</a>
+        </div>
+    </div>
+</div>
+
+
 <hr />
 <table class="table">
     <tr>
