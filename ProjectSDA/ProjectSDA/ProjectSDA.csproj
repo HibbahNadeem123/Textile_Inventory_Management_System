@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Design Patterns\SingletonPattern.cs" />
     <Compile Include="Design Patterns\StatePattern.cs" />
@@ -130,6 +131,8 @@
     </Compile>
     <Compile Include="Models\CustomerDBHandle.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderHandler.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,6 +180,9 @@
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
